@@ -28,15 +28,30 @@ public class Queue {
 	}
 	
 	public void queueDequeue() {
-		for(int i = 0; i < indexTail; i ++) {
-			numbers[i] = numbers[i+1];
+		if(indexTail == -1) {
+			System.out.println("Queue is empty");
 		}
-		numbers[indexTail] = 0;
-		indexTail -=1;
+		else {
+			for(int i = 0; i < indexTail; i ++) {
+				numbers[i] = numbers[i+1];
+			}
+			numbers[indexTail] = 0;
+			indexTail -=1;
+			if(indexTail == -1) {
+				indexHead = -1;
+			}
+		}
+		
 	}
 	
 	public int queueFindSize() {
-		return Math.abs(indexTail - indexHead) + 1;
+		if(indexTail == -1) {
+			return 0;
+		}
+		else {
+			return Math.abs(indexTail - indexHead) + 1;
+		}
+		
 	}
 	
 	public void queuePeek() {
